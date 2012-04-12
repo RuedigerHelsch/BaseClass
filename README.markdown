@@ -79,9 +79,9 @@ Define a virtual constructor function `prot.__vconstruct` instead. The
 constructor function built by extend() will then call this function
 instead of the parent class constructor. Your `prot.__vconstruct` will
 be called with:
-- the constructor function built by extend() as the first argument,
-- the parent class constructor as the second argument,
-- and then all the other arguments.
+-   the constructor function built by extend() as the first argument,
+-   the parent class constructor as the second argument,
+-   and then all the other arguments.
 
 It is the responsibility of `__vconstruct()` to call the parent
 constructor if necessary, like in this example where all arguments are
@@ -108,14 +108,14 @@ class. "Static" or class constants should also be specified in the
 prototype object *prot*.
 
 The following properties have a special significance:
-- `constructor` is a standard property of JavaScript. It is
-  automatically added by extend() and points to the constructor
-  function @a ctor of the subclass.
-- `__construct()` is called as a constructor if it is present and
-  no *ctor* argument has been passed to extend().
-- `__vconstruct()` is called if a) it is defined, b) the *ctor*
-  argument of extend() has been omitted, and c) no
-  `prot.__construct()` is defined.
+-   `constructor` is a standard property of JavaScript. It is
+    automatically added by extend() and points to the constructor
+    function @a ctor of the subclass.
+-   `__construct()` is called as a constructor if it is present and
+    no *ctor* argument has been passed to extend().
+-   `__vconstruct()` is called if a) it is defined, b) the *ctor*
+    argument of extend() has been omitted, and c) no
+    `prot.__construct()` is defined.
 
 
 Implement private members as variables of the constructor function
