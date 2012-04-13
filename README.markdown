@@ -130,7 +130,7 @@ be accessed by privileged methods which are created inside the
 constructor.
 
 For a good description see
-http://javascript.crockford.com/private.html .  See example 5.
+<http://javascript.crockford.com/private.html>.  See example 5.
 
 
 Mixing the two models
