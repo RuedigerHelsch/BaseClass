@@ -147,7 +147,7 @@ Examples
 ========
 
 
-Example 1: hierarchical inheritance
+Example 1: Hierarchical inheritance
 -----------------------------------
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -225,8 +225,8 @@ alert(""+o_BaseClass);	// Alert "[object Object]"
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Class *C_BaseClass* is a normal subclass of #BaseClass. Class
-*C_Object* is a subclass of Object, a sibling of #BaseClass. Class
+Class *C_BaseClass* is a normal subclass of *BaseClass*. Class
+*C_Object* is a subclass of Object, a sibling of *BaseClass*. Class
 *C_null* does not inherit anything, even not the standard method
 *Object.prototype.toString*.
 
@@ -362,7 +362,7 @@ The constructor defines the private variable *counter*, a private
 function `sub()` and two privileged accessor functions `this.get()`
 and `this.countdown()`. After the constructor has returned, only these
 functions defined inside the constructor can continue to access the
-private variable *counter*. Since function `sub()' makes sure only to
+private variable *counter*. Since function `sub()` makes sure only to
 count down, there is now no way to make the counter go up again. Note
 that `sub()` is not exported as `this.sub()` and can only be called as
 a free standing function. For that reason there is no *this* available
@@ -371,7 +371,10 @@ and the constructor has saved its *this* variable in a private
 variable *that*. Function `sub()` can now access public member
 variables through *that*.
 
-Copyright	2012 Ruediger Helsch
+Copyright	2012 Rüdiger Helsch
+
 License		Feel free to take what you want and use it how you see fit.
+
 $Revision: 1.4 $
+
 $Date: 2012-04-12 21:20:57 $
