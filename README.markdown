@@ -25,7 +25,7 @@ arguments can be specified inline, as in example 1 below.
 
 
 
-Inheriting from unrelated classes @anchor unrelated
+Inheriting from unrelated classes
 ---------------------------------
 
 The method extend() can also be used as a free function to derive from
@@ -304,7 +304,7 @@ o1 = C2(5); // Alert "__construct called with ctor = function () { ... },
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Class *C1* is defined in a normal way with constructor. Class *C2* is
-derived from C1, and neither is a constructor function passed to
+derived from *C1*, and neither is a constructor function passed to
 extend() as the first argument, nor is `prot.__construct()`
 defined. Method extend() builds a constructor, and because a virtual
 constructor `prot.__vconstruct()` is defined, it is called with the
