@@ -17,7 +17,7 @@ object-oriented inheritance tree, which has one method extend().  This
 method extend() is used to derive a subclass from a parent class. It
 is used like
 
-	subclass = parentclass.extend(ctor, prot);
+        subclass = parentclass.extend(ctor, prot);
 
 with *ctor* the constructor function and *prot* an object containing
 the prototype definitions (methods in object oriented language). Both
@@ -31,7 +31,7 @@ Inheriting from unrelated classes
 The method extend() can also be used as a free function to derive from
 an unrelated class. The call has the form
 
-	subclass = BaseClass.extend.call(parentclass, ctor, prot);
+        subclass = BaseClass.extend.call(parentclass, ctor, prot);
 
 where *BaseClass* is the global *BaseClass* object and *parentclass*
 is the parent class from which the subclass is to be derived.  If the
@@ -88,10 +88,10 @@ It is the responsibility of `__vconstruct()` to call the parent
 constructor if necessary, like in this example where all arguments are
 passed unmodified to the parent constructor:
 
-	__vconstruct: function(ctor, parent, arg1) {
-	    parent.apply(this, Array.prototype.slice.call(arguments, 2));
-	    // ... More work to do for __vconstruct()?
-	}
+        __vconstruct: function(ctor, parent, arg1) {
+            parent.apply(this, Array.prototype.slice.call(arguments, 2));
+            // ... More work to do for __vconstruct()?
+        }
 
 See example 4. Note that `__vconstruct()` can inspect the *prototype*
 property of the function objects *ctor* and *parent* to find out more
@@ -152,33 +152,33 @@ Example 1: Hierarchical inheritance
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-var Cat = BaseClass.extend(	// Derive subclass Cat from BaseClass
-    function Cat(name) {	// The constructor ctor for Cat:
-	this.name = name ? name : "Cat"; // An instance variable
+var Cat = BaseClass.extend(     // Derive subclass Cat from BaseClass
+    function Cat(name) {        // The constructor ctor for Cat:
+        this.name = name ? name : "Cat"; // An instance variable
     },
-    {				// Here comes the prototype prot for Cat:
-	sound: "meow",		// A class (static) constant
+    {                           // Here comes the prototype prot for Cat:
+        sound: "meow",          // A class (static) constant
 
-	say: function () {	// A method
-	    alert(this.name + " makes " + this.sound);
-	},
+        say: function () {      // A method
+            alert(this.name + " makes " + this.sound);
+        },
 
- 	hunt: function () {	// Another method
-	    alert(this.name + " catches mice");
-	}
+        hunt: function () {     // Another method
+            alert(this.name + " catches mice");
+        }
     }
 );
 
-var Tiger = Cat.extend(		// Derive subclass Tiger from parent class Cat
-    function Tiger(name) {	// The constructor ctor for Tiger:
-	Cat.call(this, name ? name : "Tiger"); // Call parent class constructor
+var Tiger = Cat.extend(         // Derive subclass Tiger from parent class Cat
+    function Tiger(name) {      // The constructor ctor for Tiger:
+        Cat.call(this, name ? name : "Tiger"); // Call parent class constructor
     },
-    {				// Here comes the prototype prot for Tiger:
-	sound: "grooarrr",	// This class constant overrides sound from Cat
+    {                           // Here comes the prototype prot for Tiger:
+        sound: "grooarrr",      // This class constant overrides sound from Cat
 
-	hunt: function (prey) {	// Overrides hunt() from Cat. Inherit say() from Cat
-	    alert(this.name + " hunts " + (prey ? prey : "sheep"));
-	}
+        hunt: function (prey) { // Overrides hunt() from Cat. Inherit say() from Cat
+            alert(this.name + " hunts " + (prey ? prey : "sheep"));
+        }
     }
 );
 
@@ -186,10 +186,10 @@ var miezi = new Cat("Miezi");
 var tiger = new Tiger;
 var balthazar = new Tiger("Balthazar");
 
-miezi.say();			// Alert "Miezi makes meow"
-tiger.say();			// Alert "Tiger makes grooarrr"
-balthazar.say();		// Alert "Balthazar makes grooarrr"
-balthazar.hunt("deer");		// Alert "Balthazar hunts deer"
+miezi.say();                    // Alert "Miezi makes meow"
+tiger.say();                    // Alert "Tiger makes grooarrr"
+balthazar.say();                // Alert "Balthazar makes grooarrr"
+balthazar.hunt("deer");         // Alert "Balthazar hunts deer"
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -220,8 +220,8 @@ var o_BaseClass = new C_BaseClass;
 var o_Object = new C_Object;
 var o_null = new C_null;
 
-alert(""+o_BaseClass);	// Alert "[object Object]"
-//alert(""+o_null);	// Would crash, does not inherit Object.prototype.toString
+alert(""+o_BaseClass);  // Alert "[object Object]"
+//alert(""+o_null);     // Would crash, does not inherit Object.prototype.toString
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -238,25 +238,25 @@ Example 3: Using private class variables, the revealing module pattern
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~{.js}
 
 var CountUp = BaseClass.extend( (function () {
-    var counter = 0;		// Private class (static) variable
+    var counter = 0;            // Private class (static) variable
     function add(i) { counter += i > 0 ? i : 1; } // Private class (static) function
     function __construct(j) { this.ivar = j; add(j); }
     function increment() { add(this.ivar); }
     function get() { return counter; }
 
-    return {	// Export three public functions to be accessible through CountUp
-	__construct: __construct,
-	increment: increment,
-	get: get
+    return {    // Export three public functions to be accessible through CountUp
+        __construct: __construct,
+        increment: increment,
+        get: get
     };
 })() );
 
-var o1 = new CountUp(3);	// Sets o1.ivar to 3, add to counter -> 3
-var o2 = new CountUp(10);	// Sets o2.ivar to 10, add to counter -> 13
-o1.increment();			// Add o1.ivar to counter -> 16
-o2.increment();			// Add o2.ivar to counter -> 26
+var o1 = new CountUp(3);        // Sets o1.ivar to 3, add to counter -> 3
+var o2 = new CountUp(10);       // Sets o2.ivar to 10, add to counter -> 13
+o1.increment();                 // Add o1.ivar to counter -> 16
+o2.increment();                 // Add o2.ivar to counter -> 26
 
-alert("counter = " + o1.get());	// Alert "counter = 26"
+alert("counter = " + o1.get()); // Alert "counter = 26"
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -291,15 +291,15 @@ var C1 = BaseClass.extend(function C1(arg) {
 
 var C2 = C1.extend({
     __vconstruct: function(ctor, parent, arg) {
-	alert("__construct called with ctor = " + ctor
+        alert("__construct called with ctor = " + ctor
               + ", parent = " + parent + ", arg = " + arg);
-	parent.apply(this, Array.prototype.slice.call(arguments, 2));
+        parent.apply(this, Array.prototype.slice.call(arguments, 2));
     }
 });
 
 o1 = C2(5); // Alert "__construct called with ctor = function () { ... },
-//	    //        parent = function C1(arg) { ... }, arg = 5"
-//	    // Alert "C1 constructor called with 5"
+//          //        parent = function C1(arg) { ... }, arg = 5"
+//          // Alert "C1 constructor called with 5"
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -324,37 +324,37 @@ only by privileged functions, which are created by the constructor.
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~{.js}
 
 var CountDown = BaseClass.extend(function (start, step) {
-    var that = this;		// Save 'this' for functions called without object (sub() below)
+    var that = this;            // Save 'this' for functions called without object (sub() below)
     var counter = start ? start : 100; // A private member variable
     this.step = step ? step : 1; // A public member variable
-    function sub(i) {		// A private function
-	 counter -= that.step > 0 ? that.step : 1; // Function add() is called without object,
-    }				// can not use 'this' to access public member variables.
-    this.get = function () {	// A privileged method with access to private variables.
-	return counter;		// It can access public (through this) and private members.
+    function sub(i) {           // A private function
+         counter -= that.step > 0 ? that.step : 1; // Function add() is called without object,
+    }                           // can not use 'this' to access public member variables.
+    this.get = function () {    // A privileged method with access to private variables.
+        return counter;         // It can access public (through this) and private members.
     };
     this.countdown = function () { // Privileged methods must be created inside the constructor.
-	sub();			   // Function sub() is not exported, must be called without object
-    };				   // (there is no this.sub()).
+        sub();                     // Function sub() is not exported, must be called without object
+    };                             // (there is no this.sub()).
 }, {
-    print: function () {	// A nonprivileged method.
-	alert(this.get());	// It can access private variables only through privileged methods.
+    print: function () {        // A nonprivileged method.
+        alert(this.get());      // It can access private variables only through privileged methods.
     }
 });
 
-var o1 = new CountDown;		// Use default values start 100, step 1
-o1.countdown();			// 99
-o1.countdown();			// 98
+var o1 = new CountDown;         // Use default values start 100, step 1
+o1.countdown();                 // 99
+o1.countdown();                 // 98
 o1.step = 5;
-o1.countdown();			// 93
+o1.countdown();                 // 93
 
-var o2 = new CountDown(10, 2);	// Start 10, step 2
+var o2 = new CountDown(10, 2);  // Start 10, step 2
 
-o2.countdown();			// 8
-o2.countdown();			// 6
+o2.countdown();                 // 8
+o2.countdown();                 // 6
 
-o1.print();			// Alert "93"
-o2.print();			// Alert "6"
+o1.print();                     // Alert "93"
+o2.print();                     // Alert "6"
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -371,9 +371,9 @@ and the constructor has saved its *this* variable in a private
 variable *that*. Function `sub()` can now access public member
 variables through *that*.
 
-Copyright	2012 Rüdiger Helsch
+Copyright       2012 Rüdiger Helsch
 
-License		Feel free to take what you want and use it how you see fit.
+License         Feel free to take what you want and use it how you see fit.
 
 $Revision: 1.4 $
 
