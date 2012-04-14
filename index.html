@@ -1,0 +1,48 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Baseclass by RuedigerHelsch</title>
+    
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1>Baseclass</h1>
+        <p>Object-oriented inheritance with JavaScript</p>
+        <p class="view"><a href="https://github.com/RuedigerHelsch/BaseClass">View the Project on GitHub <small>RuedigerHelsch/BaseClass</small></a></p>
+        <ul>
+          <li><a href="https://github.com/RuedigerHelsch/BaseClass/zipball/master">Download <strong>ZIP File</strong></a></li>
+          <li><a href="https://github.com/RuedigerHelsch/BaseClass/tarball/master">Download <strong>TAR Ball</strong></a></li>
+          <li><a href="https://github.com/RuedigerHelsch/BaseClass">Fork On <strong>GitHub</strong></a></li>
+        </ul>
+      </header>
+      <section>
+        <h1>Object-oriented inheritance in JavaScript</h1>
+
+<p>Used to traditional object-oriented languages, I found JavaScript's prototype-based inheritance confusing. Also I hated to repeatedly type the four-step JavaScript procedure for inheritance. We have computers for this! So I wrote this small utility function, which derives a subclass in one step and avoids polluting the prototype with instance variables of the parent class.
+Usage</p>
+
+<p>This module consists of one class <em>BaseClass</em>, the root of an object-oriented inheritance tree, which has one method <em>extend()</em>. This method <em>extend()</em> is used to derive a subclass from a parent class. It is used like</p>
+
+<pre><code>subclass = parentclass.extend(ctor, prot);
+</code></pre>
+
+<p>with <em>ctor</em> the constructor function and <em>prot</em> an object containing the prototype definitions (methods in object oriented language).</p>
+      </section>
+      <footer>
+        <p>This project is maintained by <a href="https://github.com/RuedigerHelsch">RuedigerHelsch</a></p>
+        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
+      </footer>
+    </div>
+    <script src="javascripts/scale.fix.js"></script>
+    
+  </body>
+</html>
